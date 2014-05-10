@@ -1,0 +1,32 @@
+extends ../layouts/default
+
+block js
+	script(src="/keystone/js/common/plugins.js")
+	script(src="/keystone/js/common/ui.js")
+	script(src="/keystone/js/common/ui-alt-text.js")
+	script(src="/keystone/js/common/ui-sortable.js")
+	script(src='/keystone/js/views/item.js')
+
+block content
+	.container
+		if enquirySubmitted
+			h3 Thanks for getting in touch.
+		else
+			.row: .col-sm-8.col-md-6
+				form(method='post')
+					input(type='hidden', name='action', value='contact')
+					.form-group(class=validationErrors.name ? 'has-error' : null)
+						label Name
+						input(type='text', name='name.full', value=formData['name.full'], required).form-control
+					.form-group(class=validationErrors.email ? 'has-error' : null)
+						label Email
+						input(type='email', name='email', value=formData.email, required).form-control
+					.form-group
+						label Phone
+						input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
+					.form-group
+						label Phone
+						div.ui-select2-ref
+						input.ui-select2-ref(data-ref-many="true",data-ref-path="Tags", data-ref-singular="Tag", data-ref-plural="Tags", name="tags")				
+					.form-actions
+						button(type='submit').btn.btn-primary Send
