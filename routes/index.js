@@ -36,6 +36,8 @@ var routes = {
 exports = module.exports = function(app) {
 	// Views
 	app.get('/', routes.views.index);
+	app.get('/upload', routes.views.video);
+	app.post('/upload', routes.views.video);
 	app.get('/video', routes.views.video);
 	app.post('/video', routes.views.video);
 
