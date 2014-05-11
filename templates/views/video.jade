@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 extends ../layouts/header
 
 block content
@@ -446,52 +445,4 @@ block footer
         //
            /#footer 
 
-=======
-extends ../layouts/default
 
-block css
-	//- Component Stylesheets
-	link(rel="stylesheet", href="/keystone/js/lib/select2/select2-3.3.2.css")
-	link(rel="stylesheet", href="/keystone/js/lib/pikaday/pikaday-1.1.0.css")
-
-	//- Keystone Stylesheet
-	link(rel="stylesheet", href="/keystone/styles/keystone.min.css")
-
-block js
-	script.
-		Keystone = {};
-		Keystone.list = { path: "Video" };
-	script(src="/keystone/js/lib/underscore/underscore-1.5.1.min.js")
-	script(src="/keystone/js/lib/select2/select2-3.3.2.min.js")
-	script(src="/keystone/js/lib/pikaday/pikaday-1.1.0.js")
-	script(src="/keystone/js/lib/pikaday/pikaday.jquery-1.1.0.js")
-	script(src="/keystone/js/common/plugins.js")
-	script(src="/keystone/js/common/ui.js")
-	script(src="/keystone/js/common/ui-alt-text.js")
-	script(src="/keystone/js/common/ui-sortable.js")
-	script(src='/keystone/js/views/item.js')
-
-block content
-	.container
-		if enquirySubmitted
-			h3 Thanks for getting in touch.
-		else
-			.row: .col-sm-8.col-md-6
-				form(method='post')
-					input(type='hidden', name='action', value='contact')
-					.form-group(class=validationErrors.name ? 'has-error' : null)
-						label Title
-						input(type='text', name='title', value=formData['title'], required).form-control
-					.form-group(class=validationErrors.email ? 'has-error' : null)
-						label Url:
-						input(type='text', name='urlUptobox', value=formData.urlUptobox, required).form-control
-					.form-group
-						label Tags
-						input.ui-select2-ref(type="hidden",data-ref-many="true",data-ref-path="Tag", data-ref-singular="Tag", data-ref-plural="Tags", name="tags")				
-					.form-group
-						label User
-						input.ui-select2-ref(type="hidden",data-ref-many="false",data-ref-path="User", data-ref-singular="User", data-ref-plural="Users", name="user")				
-
-					.form-actions
-						button(type='submit').btn.btn-primary Send
->>>>>>> upstream/master
