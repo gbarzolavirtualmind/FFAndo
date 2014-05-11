@@ -1,0 +1,63 @@
+doctype html
+html
+  //- HTML HEADER
+  head
+      title= title || 'Stremeando'
+      meta(charset='utf-8')
+      //if IE
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      title Titulo de la pagina
+      
+      //- Include template-specific stylesheets by extending the css block
+      block css
+        //if lt IE 9
+          script(src='assetsjs/ie8/html5shiv.js')
+          script(src='assetsjs/ie8/respond.min.js')
+        link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', type='text/css', media='all')
+        link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', type='text/css', media='all')
+        link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900&ver=3.9', type='text/css', media='all')
+        link(rel='stylesheet', href='/frontend/css/comentarios.css', type='text/css', media='all')
+        link(rel='stylesheet', href='/frontend/css/style.css', type='text/css', media='all')
+      
+      //- Include template-specific javascript files by extending the js block
+      block js
+        script(src='//code.jquery.com/jquery-1.11.0.min.js')
+        script(src='//code.jquery.com/jquery-migrate-1.2.1.min.js')
+        script(type='text/javascript', src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+  body.single
+    #header
+      .container
+        .row
+          #logo.col-sm-3
+            a(href='', title='Just another WordPress site')
+              img(alt='Just another WordPress site', src='/frontend/img/logo.png')
+          form(action='', method='get')
+            #header-search.col-sm-6
+              span.glyphicon.glyphicon-search.search-icon
+              input#search(type='text', placeholder='Buscar...', name='s', value='')
+          #header-social.col-sm-3
+            a(href='#')
+              i.fa.fa-facebook
+            a(href='#')
+              i.fa.fa-twitter
+            a(href='#')
+              i.fa.fa-google-plus
+            a(href='#')
+              i.fa.fa-instagram
+            a(href='#')
+              i.fa.fa-linkedin
+            a(href='#')
+              i.fa.fa-rss
+    //- NOTE:
+    //- There is no .container wrapping class around body blocks to allow more flexibility in design.
+    //- Remember to include it in your templates when you override the intro and content blocks!
+
+    //- The Intro block appears above flash messages (used for temporary information display)
+    block intro
+
+    //- The content block should contain the body of your template's content
+    block content
+
+    block footer
+

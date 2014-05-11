@@ -1,47 +1,448 @@
-extends ../layouts/default
-
-block css
-	//- Component Stylesheets
-	link(rel="stylesheet", href="/keystone/js/lib/select2/select2-3.3.2.css")
-	link(rel="stylesheet", href="/keystone/js/lib/pikaday/pikaday-1.1.0.css")
-
-	//- Keystone Stylesheet
-	link(rel="stylesheet", href="/keystone/styles/keystone.min.css")
-
-block js
-	script.
-		Keystone = {};
-		Keystone.list = { path: "Video" };
-	script(src="/keystone/js/lib/underscore/underscore-1.5.1.min.js")
-	script(src="/keystone/js/lib/select2/select2-3.3.2.min.js")
-	script(src="/keystone/js/lib/pikaday/pikaday-1.1.0.js")
-	script(src="/keystone/js/lib/pikaday/pikaday.jquery-1.1.0.js")
-	script(src="/keystone/js/common/plugins.js")
-	script(src="/keystone/js/common/ui.js")
-	script(src="/keystone/js/common/ui-alt-text.js")
-	script(src="/keystone/js/common/ui-sortable.js")
-	script(src='/keystone/js/views/item.js')
+extends ../layouts/header
 
 block content
-	.container
-		if enquirySubmitted
-			h3 Thanks for getting in touch.
-		else
-			.row: .col-sm-8.col-md-6
-				form(method='post')
-					input(type='hidden', name='action', value='contact')
-					.form-group(class=validationErrors.name ? 'has-error' : null)
-						label Title
-						input(type='text', name='title', value=formData['title'], required).form-control
-					.form-group(class=validationErrors.email ? 'has-error' : null)
-						label Url:
-						input(type='text', name='urlUptobox', value=formData.urlUptobox, required).form-control
-					.form-group
-						label Tags
-						input.ui-select2-ref(type="hidden",data-ref-many="true",data-ref-path="Tag", data-ref-singular="Tag", data-ref-plural="Tags", name="tags")				
-					.form-group
-						label User
-						input.ui-select2-ref(type="hidden",data-ref-many="false",data-ref-path="User", data-ref-singular="User", data-ref-plural="Users", name="user")				
+    .video-wrapper
+        .container
+            .video-info
+              h1 Godzilla Official Main Trailer
+              span.views
+                i.fa.fa-eye
+                | 741
+              a.likes-dislikes(href='javascript:void(0)')
+                span.likes
+                  i.fa.fa-thumbs-up
+                  label.likevideo1717 48
+            .videoWrapper.player
+              iframe(width='1140', height='641', src='http://www.youtube.com/embed/vIu85WQTPRc', frameborder='0', allowfullscreen='allowfullscreen')
+    .container
+      .row
+        .col-sm-8
+          .row.video-options
+            .col-xs-3
+              a.option.comments-scrolling(href='javascript:void(0)')
+                i.fa.fa-comments
+                span.option-text Botones
+            .col-xs-3
+              a#off.option.share-button(href='javascript:void(0)')
+                i.fa.fa-share
+                span.option-text Para
+            .col-xs-3
+              a#buttonlike.option.likes-dislikes(href='javascript:void(0)', action='http://theme.marstheme.com/videotube/video/godzilla-official-main-trailer/like', video='1717')
+                i.fa.fa-thumbs-up
+                span.option-text.likes-dislikes
+                  label.likevideo1717 Los
+            .col-xs-3
+              //LIGHT SWITCH 
+              a.option.switch-button(href='javascript:void(0)')
+                i.fa.fa-lightbulb-o
+                span.option-text Hashtags
+          .video-details
+            span.date
+              | Publicado el 22 de agosto del 2014 by
+              a(href='#') Toan Nguyen
+            .post-entry
+              p
+                | Lorem ipsum dolor sit amet, erant complectitur ea nec, no sea vide nullam, ne appareat quaerendum vel. Cu meliore accusata vis, nam facer evertitur cu, id facilisi abhorreant per. Putant animal eu sea, ne quot nihil mediocritatem cum, cu ius torquatos dissentiet contentiones. Eos ex propriae invidunt accusamus, in vidit deterruisset eum, everti ponderum suavitate nec ad. Et dico melius insolens vis, nullam corrumpit adipiscing mel id.
+              p
+                | Utroque singulis consectetuer eam ei. Ne vel tritani definiebas, viris quaeque invenire sit ea. No consul mollis est. Iuvaret tractatos voluptatum per te.
+            span.meta
+              span.meta-info Category
+              a(href='../../categories/trailers/index.html', rel='tag') Trailers
+            span.meta
+              span.meta-info Tag
+              a(href='../../video_tag/featuredvid/index.html', rel='tag') featuredvid
+              a(href='../../video_tag/godzilla/index.html', rel='tag') godzilla
+              a(href='../../video_tag/movies/index.html', rel='tag') movies
+              a(href='../../video_tag/trailer/index.html', rel='tag') trailer
+          #carousel-latest-mars-relatedvideo-widgets-2.carousel.carousel-mars-relatedvideo-widgets-2.video-section
+            .section-header
+              h3
+                i.fa.fa-star
+                | Comentarios
+          .criticas
+            .top
+              .left
+                .rn
+                  .rate
+                    span(style='width: 73%;')
+                  .rank
+                    span.rk 3.64
+                    | / 5
+                    .rank_label puntaje
+                .sep
+                ul.rateinfo
+                  li
+                    span.r 5
+                    span.bar
+                      span(style='width: 33%;')
+                    span.num 181
+                    .clear
+                  li
+                    span.r 4
+                    span.bar
+                      span(style='width: 27%;')
+                    span.num 145
+                    .clear
+                  li
+                    span.r 3
+                    span.bar
+                      span(style='width: 19%;')
+                    span.num 103
+                    .clear
+                  li
+                    span.r 2
+                    span.bar
+                      span(style='width: 8%;')
+                    span.num 42
+                    .clear
+                  li
+                    span.r 1
+                    span.bar
+                      span(style='width: 13%;')
+                    span.num 70
+                    .clear
+                .rank_label
+                  span.votos 541
+                  | votos
+              .right2
+                form(action='forms/add_critica_pelicula', onsubmit='c.submitForm(this,upCom,[\'puntaje\']);return false')
+                  .floatr
+                    .action_bar
+                      .box.puntuar
+                        a
+                        a
+                        a
+                        a
+                        a
+                        .txt puntuar
+                        input(type='hidden', name='puntaje', value='')
+                  input(type='hidden', name='showid', value='5236')
+                  textarea.critica(name='comentario', placeholder='Puntúa. Escribe un comentario opcional.')
+                  #errormsg.errormsg
+                  .but
+                    .floatl
+                      input.boton(type='submit', value='Enviar crítica')
+                    .load
+                      img(src='http://sc.cuevana.tv/new/img/loader_small.gif')
+                    .clearl
+              .clearl
+            .sep
+            #criticas.minusmargin
+              .info.top
+                .pag
+                  span.actual 1
+                  a(data-page='2') 2
+                  a(data-page='3') 3
+                  span …
+                  a(data-page='29') 29
+                  a.next(data-page='2')
+                | Mostrando críticas
+                span.cant 1 - 15
+                | de
+                span.total 435
+              ul
+                li.loader
+                  img(src='http://sc.cuevana.tv/new/img/loader_list.gif')
+                li.sample
+                  .img
+                    img(src='')
+                  div
+                    .fecha
+                    .usuario
+                  .right_box
+                    .floatl
+                      a.warn(data-url='forms/report_critica', data-title='Reportar comentario')
+                        span
+                    .rate
+                      span
+                  .txt
+                  .clear
+                li.ban
+                  .img
+                    img(src='/frontend/img/avatar/odnok.png')
+                  div
+                    .fecha Domingo 13 de Abril
+                    .usuario
+                      a(href='#!/usuarios/KaMusBear') KaMusBear
+                  .right_box
+                    .floatl
+                      a.warn(data-url='forms/report_critica', data-title='Reportar comentario', data-id='1260529')
+                        span
+                    .rate
+                      span(style='width: 60%;')
+                  .txt
+                    | estaba entretenida la peli, pero el servidor tiene un tiempo limitado de uso, para ver el final hay que esperar 3 horas!!!! (Uploadbz)
+                  .clear
+                li.ban.row2
+                  .img
+                    img(src='/frontend/img/avatar/odnok.png')
+                  div
+                    .fecha Viernes 11 de Abril
+                    .usuario
+                      a(href='#!/usuarios/Leo_Lopez') Leo_Lopez
+                  .right_box
+                    .floatl
+                      a.warn(data-url='forms/report_critica', data-title='Reportar comentario', data-id='1260443', style='display: none;')
+                        span
+                    .rate
+                      span(style='width: 80%;')
+                  .clear
+                li.ban
+                  .img
+                    img(src='/frontend/img/avatar/odnok.png')
+                  div
+                    .fecha Lunes 7 de Abril
+                    .usuario
+                      a(href='#!/usuarios/osvaldoojeda') osvaldoojeda
+                  .right_box
+                    .floatl
+                      a.warn(data-url='forms/report_critica', data-title='Reportar comentario', data-id='1260322', style='display: none;')
+                        span
+                    .rate
+                      span(style='width: 60%;')
+                  .txt
+                    | Para activar subtitulos pulsa casilla "CC", al lado de indicador de duración de película, pantalla completa, sonido, etc
+                  .clear
+                li.ban.row2
+                  .img
+                    img(src='/frontend/img/avatar/odnok.png')
+                  div
+                    .fecha Jueves 3 de Abril
+                    .usuario
+                      a(href='#!/usuarios/NoniGarcia') NoniGarcia
+                  .right_box
+                    .floatl
+                      a.warn(data-url='forms/report_critica', data-title='Reportar comentario', data-id='1260032', style='display: none;')
+                        span
+                    .rate
+                      span(style='width: 20%;')
+                  .txt no esta subtitulada!
+                  .clear
+              .info
+                .pag
+                  span.actual 1
+                  a(data-page='2') 2
+                  a(data-page='3') 3
+                  span …
+                  a(data-page='29') 29
+                  a.next(data-page='2')
+                | Mostrando críticas
+                span.cant 1 - 15
+                | de
+                span.total 435
+        .col-sm-4.sidebar
+          .widget
+            h4.widget-title Compartilo
+            .social-counter-item
+              a(target='_blank', href='#')
+                i.fa.fa-facebook
+                span.counter 0
+                span.counter-text Fans
+            .social-counter-item
+              a(target='_blank', href='#')
+                i.fa.fa-twitter
+                span.counter 0
+                span.counter-text Followers
+            .social-counter-item
+              a(target='_blank', href='#')
+                i.fa.fa-google-plus
+                span.counter 0
+                span.counter-text Fans
+            .social-counter-item.last
+              a(href='#', data-toggle='modal', data-target='#subscrib-modal')
+                i.fa.fa-rss
+                span.counter 87
+                span.counter-text Subscribers
+            //
+               Modal 
+            #subscrib-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='subscrib-modal-label', aria-hidden='true')
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h4#subscrib-modal-label.modal-title Subscribe
+                  .modal-body
+                    form#mars-subscribe-form(method='post', role='form', action='#', name='mars-subscribe-form')
+                      .form-group.name
+                        label(for='name') Your Name
+                        input#name.form-control(type='text')
+                      .form-group.email
+                        label(for='email') Your Email Address
+                        input#email.form-control(type='email')
+                      .checkbox
+                        label
+                          input#agree(name='agree', type='checkbox')
+                          a(href='../../privacy-policy/index.html') User Agreement & Privacy Policy
+                      input#mars_subscrib(type='hidden', name='mars_subscrib', value='4db03646ef')
+                      input(type='hidden', name='_wp_http_referer', value='/videotube/video/godzilla-official-main-trailer/')
+                      button.btn.btn-primary(type='submit') Register
+                      input(type='hidden', name='submit-label', value='Register')
+                      button.btn.btn-default(type='button', data-dismiss='modal') Close
+                      input#referer(type='hidden', name='referer', value='1717')
+          .widget
+            h4.widget-title OTROS VIDEOS
+            .item.mars-videos-sidebar-widget-23-7
+              .item-img
+                a(title='Hiking The Pacific Crest Trail', href='../hiking-the-pacific-crest-trail/index.html')
+                  img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/hiking-the-pacific-crest-trail-360x240.jpg', alt='Hiking The Pacific Crest Trail')
+                a(href='../hiking-the-pacific-crest-trail/index.html')
+                  .img-hover
+              h3
+                a(title='Hiking The Pacific Crest Trail', href='../hiking-the-pacific-crest-trail/index.html') Hiking The Pacific Crest Trail
+              .meta
+                span.date 2 months ago
+                span.views
+                  i.fa.fa-eye
+                  | 440
+                span.heart
+                  i.fa.fa-heart
+                  | 28
+                span.fcomments
+                  i.fa.fa-comments
+                  | 3
+            .item.mars-videos-sidebar-widget-23-17
+              .item-img
+                a(title='Happy Food', href='../happy-food/index.html')
+                  img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/happy-food-360x240.jpg', alt='Happy Food')
+                a(href='../happy-food/index.html')
+                  .img-hover
+              h3
+                a(title='Happy Food', href='../happy-food/index.html') Happy Food
+              .meta
+                span.date 2 months ago
+                span.views
+                  i.fa.fa-eye
+                  | 496
+                span.heart
+                  i.fa.fa-heart
+                  | 30
+                span.fcomments
+                  i.fa.fa-comments
+                  | 0
+            .item.mars-videos-sidebar-widget-23-24
+              .item-img
+                a(title='Final Fantasy XV', href='../final-fantasy-xv/index.html')
+                  img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/fanta-360x240.jpg', alt='fanta')
+                a(href='../final-fantasy-xv/index.html')
+                  .img-hover
+              h3
+                a(title='Final Fantasy XV', href='../final-fantasy-xv/index.html') Final Fantasy XV
+              .meta
+                span.date 2 months ago
+                span.views
+                  i.fa.fa-eye
+                  | 541
+                span.heart
+                  i.fa.fa-heart
+                  | 18
+                span.fcomments
+                  i.fa.fa-comments
+                  | 0
+            .item.mars-videos-sidebar-widget-23-30
+              .item-img
+                a(title='Wild Coffee', href='../bbc-knowledge-60/index.html')
+                  img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/wild-coffee-360x240.jpg', alt='Wild Coffee')
+                a(href='../bbc-knowledge-60/index.html')
+                  .img-hover
+              h3
+                a(title='Wild Coffee', href='../bbc-knowledge-60/index.html') Wild Coffee
+              .meta
+                span.date 2 months ago
+                span.views
+                  i.fa.fa-eye
+                  | 175
+                span.heart
+                  i.fa.fa-heart
+                  | 7
+                span.fcomments
+                  i.fa.fa-comments
+                  | 0
+        //
+           /.sidebar 
+      //
+         /.row
+block footer
+    div#footer
+        .container
+            .row
+              .col-sm-3.widget
+                h4.footer-widget-title Meta
+                ul
+                  li
+                    a(href='../../register/index.html?action=register') Register
+                  li
+                    a(href='../../register/index.html') Log in
+                  li
+                    a(href='../../feed/index.html', title='Syndicate this site using RSS 2.0')
+                      | Entries
+                      abbr(title='Really Simple Syndication') RSS
+                  li
+                    a(href='../../comments/feed/index.html', title='The latest comments to all posts in RSS')
+                      | Comments
+                      abbr(title='Really Simple Syndication') RSS
+                  li
+                    a(href='https://wordpress.org/', title='Powered by WordPress, state-of-the-art semantic personal publishing platform.') WordPress.org
+              .col-sm-3.widget
+                h4.footer-widget-title LO MAS BUSCADO
+                a.tag.tag-link-287(href='../../tag/band/index.html', title='5 topics') band
+                a.tag.tag-link-281(href='../../tag/delicious/index.html', title='6 topics') delicious
+                a.tag.tag-link-159(href='../../tag/fail/index.html', title='4 topics') Fail
+                a.tag.tag-link-33(href='../../video_tag/featured/index.html', title='39 topics') featured
+                a.tag.tag-link-293(href='../../video_tag/featuredvid/index.html', title='6 topics') featuredvid
+                a.tag.tag-link-279(href='../../tag/food-2/index.html', title='6 topics') food
+                a.tag.tag-link-278(href='../../tag/funny/index.html', title='4 topics') funny
+                a.tag.tag-link-289(href='../../tag/live/index.html', title='5 topics') live
+                a.tag.tag-link-37(href='../../video_tag/movie/index.html', title='8 topics') Movie
+                a.tag.tag-link-286(href='../../tag/music-3/index.html', title='5 topics') music
+                a.tag.tag-link-254(href='../../video_tag/music-2/index.html', title='7 topics') music
+                a.tag.tag-link-32(href='../../video_tag/official/index.html', title='6 topics') official
+                a.tag.tag-link-288(href='../../tag/perfomance/index.html', title='5 topics') perfomance
+                a.tag.tag-link-45(href='../../video_tag/recipe/index.html', title='3 topics') Recipe
+                a.tag.tag-link-280(href='../../tag/recipe-2/index.html', title='6 topics') recipe
+                a.tag.tag-link-290(href='../../video_tag/song/index.html', title='3 topics') song
+                a.tag.tag-link-31(href='../../video_tag/video/index.html', title='6 topics') video
+                a.tag.tag-link-47(href='../../video_tag/video-game/index.html', title='6 topics') Video Game
+                a.tag.tag-link-277(href='../../tag/videos/index.html', title='4 topics') videos
+                a.tag.tag-link-276(href='../../tag/viral/index.html', title='4 topics') viral
+              .col-sm-3.widget
+                h4.footer-widget-title REDES SOCIALES
+                ul.list-unstyled.social
+                  li
+                    a(href='#')
+                      i.fa.fa-facebook
+                      | Facebook
+                  li
+                    a(href='#')
+                      i.fa.fa-twitter
+                      | twitter
+                  li
+                    a(href='#')
+                      i.fa.fa-google-plus
+                      | Google Plus
+                  li
+                    a(href='#')
+                      i.fa.fa-instagram
+                      | Instagram
+                  li
+                    a(href='#')
+                      i.fa.fa-linkedin
+                      | Linkedin
+                  li
+                    a(href='../../feed/rss/index.html')
+                      i.fa.fa-rss
+                      | RSS
+              .col-sm-3.widget
+                h4.footer-widget-title SOBRE LA PAGINA
+                .textwidget
+                  p
+                    | Donec rutrum varius quam non euismod. Nullam arcu urna, dignisim amsan bindum ut, fermentum a quam.
+                  p
+                    | Suspendisse fermentum augue vel nulla iaculis id tempus massa consequat. Donec venenatis leo eu felis condiment lorem ipsum.
+            .copyright
+              p
+                | FUTGOL 2014 - Powered by WordPress &
+                span(style='line-height: 1.5em;') MarsTheme
+        //
+           /#footer 
 
-					.form-actions
-						button(type='submit').btn.btn-primary Send
+
