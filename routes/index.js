@@ -18,10 +18,10 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-var _ = require('underscore'),
-	keystone = require('keystone'),
-	middleware = require('./middleware'),
-	importRoutes = keystone.importer(__dirname);
+ var _ = require('underscore'),
+ keystone = require('keystone'),
+ middleware = require('./middleware'),
+ importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -29,8 +29,22 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views')
+	views: importRoutes('./views'),
+	keystone:importRoutes('../node_modules/keystone/routes/api')
 };
+
+var initList = function(protect) {
+	return function(req, res, next) {
+		req.list = keystone.list(req.params.list);
+		if (!req.list || (protect && req.list.get('hidden'))) {
+			req.flash('error', 'List ' + req.params.list + ' could not be found.');
+			return res.redirect('/keystone');
+		}
+		next();
+	}
+}
+
+console.log(routes);
 
 // Setup Route Bindings
 exports = module.exports = function(app) {
@@ -40,6 +54,7 @@ exports = module.exports = function(app) {
 	app.post('/upload', routes.views.video);
 	app.get('/video', routes.views.video);
 	app.post('/video', routes.views.video);
+	app.all('/keystone/api/:list/:action', initList(), routes.keystone.list);
 
 	
 	
