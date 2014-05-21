@@ -50,10 +50,12 @@ console.log(routes);
 exports = module.exports = function(app) {
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/upload', routes.views.video);
-	app.post('/upload', routes.views.video);
+	app.get('/upload', routes.views.upload);
+	app.post('/upload', routes.views.upload);
 	app.get('/video', routes.views.video);
 	app.post('/video', routes.views.video);
+	app.get('/home', routes.views.home);
+	app.post('/home', routes.views.home);
 	app.all('/keystone/api/:list/:action', initList(), routes.keystone.list);
 
 	

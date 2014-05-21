@@ -1,0 +1,43 @@
+.container
+    .row
+        .col-sm-8
+            .post-header
+              h2
+                | Subir Partido
+            .post-entry
+              .alert.alert-info.alert-dismissable
+                button.close(type='button', data-dismiss='alert', aria-hidden='true')
+                  | ×
+                p Solo se permiten videos de buena calidad, los videos malos se borran papa
+              form#submit-video-form(role='form', action='', method='post', enctype='multipart/form-data')
+                .form-group.post_title
+                  label(for='post_title') Titulo del partido
+                  span.label.label-danger Obligatorio
+                  input#post_title.form-control(type='text', name='post_title')
+                  span.help-block
+                .form-group.post_content
+                  label(for='post_content') Descripcion del partido
+                  textarea#post_content.form-control(name='post_content', rows='3')
+                  span.help-block
+                .form-group.post_date
+                  label(for='post_title') Dia del partido
+                  span.label.label-danger Obligatorio
+                  input#post_title.form-control(type='text', name='post_title')
+                  span.help-block
+                .form-group.video_url.video-type.video_link_type
+                  label(for='video_url') Link Uptobox
+                  span.label.label-danger Obligatorio
+                  input#video_url.form-control(type='text', name='video_url', placeholder='Ejemplo: http://uptobox.com/03qzl3kjgwft')
+                  span.help-block
+                .form-group.video_thumbnail
+                  label(for='video_url') Imagen del partido
+                  span.label.label-info Temporal, en el futuro se hara automaticamente
+                  input#video_thumbnail.form-control(type='file', name='video_thumbnail')
+                  span.help-block
+                .form-group
+                  label(for='key') Tags
+                  input#video_tag.form-control(type='text', name='video_tag')
+                button.btn.btn-primary(type='submit') Subir Partido
+                img#loading(style='display: none;', src='http://theme.marstheme.com/videotube/wp-content/themes/videotube/img/ajax-loader.gif')
+          //
+             /.post 
