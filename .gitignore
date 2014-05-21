@@ -9,6 +9,8 @@ lib-cov
 pids
 logs
 results
+files/*
+!files/.gitkeep
 
 npm-debug.log
 node_modules
