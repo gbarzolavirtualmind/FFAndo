@@ -1,0 +1,175 @@
+.carousel.carousel-mars-relatedvideo-widgets-2.video-section
+  .section-header
+    h3
+      i.fa.fa-star
+      | Comentarios
+.criticas
+  .top
+    .left
+      .rn
+        .rate
+          span(style='width: 73%;')
+        .rank
+          span.rk 3.64
+          | / 5
+          .rank_label puntaje
+      .sep
+      ul.rateinfo
+        li
+          span.r 5
+          span.bar
+            span(style='width: 33%;')
+          span.num 181
+          .clear
+        li
+          span.r 4
+          span.bar
+            span(style='width: 27%;')
+          span.num 145
+          .clear
+        li
+          span.r 3
+          span.bar
+            span(style='width: 19%;')
+          span.num 103
+          .clear
+        li
+          span.r 2
+          span.bar
+            span(style='width: 8%;')
+          span.num 42
+          .clear
+        li
+          span.r 1
+          span.bar
+            span(style='width: 13%;')
+          span.num 70
+          .clear
+      .rank_label
+        span.votos 541 | votos
+    .right2
+      form(action='forms/add_critica_pelicula', onsubmit='c.submitForm(this,upCom,[\'puntaje\']);return false')
+        .floatr
+          .action_bar
+            .box.puntuar
+              a
+              a
+              a
+              a
+              a
+              .txt puntuar
+              input(type='hidden', name='puntaje', value='')
+        input(type='hidden', name='showid', value='5236')
+        textarea.critica(name='comentario', placeholder='Puntúa. Escribe un comentario opcional.')
+        #errormsg.errormsg
+        .but
+          .floatl
+            input.boton(type='submit', value='Enviar crítica')
+          .load
+            img(src='http://sc.cuevana.tv/new/img/loader_small.gif')
+          .clearl
+    .clearl
+  .sep
+  #criticas.minusmargin
+    .info.top
+      .pag
+        span.actual 1
+        a(data-page='2') 2
+        a(data-page='3') 3
+        span …
+        a(data-page='29') 29
+        a.next(data-page='2')
+      | Mostrando críticas
+      span.cant 1 - 15
+      | de
+      span.total 435
+    ul
+      li.loader
+        img(src='http://sc.cuevana.tv/new/img/loader_list.gif')
+      li.sample
+        .img
+          img(src='')
+        div
+          .fecha
+          .usuario
+        .right_box
+          .floatl
+            a.warn(data-url='forms/report_critica', data-title='Reportar comentario')
+              span
+          .rate
+            span
+        .txt
+        .clear
+      li.ban
+        .img
+          img(src='/frontend/img/avatar/odnok.png')
+        div
+          .fecha Domingo 13 de Abril
+          .usuario
+            a(href='#!/usuarios/KaMusBear') KaMusBear
+        .right_box
+          .floatl
+            a.warn(data-url='forms/report_critica', data-title='Reportar comentario', data-id='1260529')
+              span
+          .rate
+            span(style='width: 60%;')
+        .txt
+          | estaba entretenida la peli, pero el servidor tiene un tiempo limitado de uso, para ver el final hay que esperar 3 horas!!!! (Uploadbz)
+        .clear
+      li.ban.row2
+        .img
+          img(src='/frontend/img/avatar/odnok.png')
+        div
+          .fecha Viernes 11 de Abril
+          .usuario
+            a(href='#!/usuarios/Leo_Lopez') Leo_Lopez
+        .right_box
+          .floatl
+            a.warn(data-url='forms/report_critica', data-title='Reportar comentario', data-id='1260443', style='display: none;')
+              span
+          .rate
+            span(style='width: 80%;')
+        .clear
+      li.ban
+        .img
+          img(src='/frontend/img/avatar/odnok.png')
+        div
+          .fecha Lunes 7 de Abril
+          .usuario
+            a(href='#!/usuarios/osvaldoojeda') osvaldoojeda
+        .right_box
+          .floatl
+            a.warn(data-url='forms/report_critica', data-title='Reportar comentario', data-id='1260322', style='display: none;')
+              span
+          .rate
+            span(style='width: 60%;')
+        .txt
+          | Para activar subtitulos pulsa casilla "CC", al lado de indicador de duración de película, pantalla completa, sonido, etc
+        .clear
+      li.ban.row2
+        .img
+          img(src='/frontend/img/avatar/odnok.png')
+        div
+          .fecha Jueves 3 de Abril
+          .usuario
+            a(href='#!/usuarios/NoniGarcia') NoniGarcia
+        .right_box
+          .floatl
+            a.warn(data-url='forms/report_critica', data-title='Reportar comentario', data-id='1260032', style='display: none;')
+              span
+          .rate
+            span(style='width: 20%;')
+        .txt no esta subtitulada!
+        .clear
+    .info
+      .pag
+        span.actual 1
+        a(data-page='2') 2
+        a(data-page='3') 3
+        span …
+        a(data-page='29') 29
+        a.next(data-page='2')
+      | Mostrando críticas
+      span.cant 1 - 15
+      | de
+      span.total 435

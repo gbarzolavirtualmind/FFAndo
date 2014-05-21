@@ -1,0 +1,133 @@
+block sharing
+    .widget
+      h4.widget-title Compartilo
+      .social-counter-item
+        a(target='_blank', href='#')
+          i.fa.fa-facebook
+          span.counter 0
+          span.counter-text Fans
+      .social-counter-item
+        a(target='_blank', href='#')
+          i.fa.fa-twitter
+          span.counter 0
+          span.counter-text Followers
+      .social-counter-item
+        a(target='_blank', href='#')
+          i.fa.fa-google-plus
+          span.counter 0
+          span.counter-text Fans
+      .social-counter-item.last
+        a(href='#', data-toggle='modal', data-target='#subscrib-modal')
+          i.fa.fa-rss
+          span.counter 87
+          span.counter-text Subscribers
+      //
+         Modal 
+      #subscrib-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='subscrib-modal-label', aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+              h4#subscrib-modal-label.modal-title Subscribe
+            .modal-body
+              form#mars-subscribe-form(method='post', role='form', action='#', name='mars-subscribe-form')
+                .form-group.name
+                  label(for='name') Your Name
+                  input#name.form-control(type='text')
+                .form-group.email
+                  label(for='email') Your Email Address
+                  input#email.form-control(type='email')
+                .checkbox
+                  label
+                    input#agree(name='agree', type='checkbox')
+                    a(href='../../privacy-policy/index.html') User Agreement & Privacy Policy
+                input#mars_subscrib(type='hidden', name='mars_subscrib', value='4db03646ef')
+                input(type='hidden', name='_wp_http_referer', value='/videotube/video/godzilla-official-main-trailer/')
+                button.btn.btn-primary(type='submit') Register
+                input(type='hidden', name='submit-label', value='Register')
+                button.btn.btn-default(type='button', data-dismiss='modal') Close
+                input#referer(type='hidden', name='referer', value='1717')
+
+block more-videos
+  .widget
+    h4.widget-title OTROS VIDEOS
+    .item.mars-videos-sidebar-widget-23-7
+      .item-img
+        a(title='Hiking The Pacific Crest Trail', href='../hiking-the-pacific-crest-trail/index.html')
+          img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/hiking-the-pacific-crest-trail-360x240.jpg', alt='Hiking The Pacific Crest Trail')
+        a(href='../hiking-the-pacific-crest-trail/index.html')
+          .img-hover
+      h3
+        a(title='Hiking The Pacific Crest Trail', href='../hiking-the-pacific-crest-trail/index.html') Hiking The Pacific Crest Trail
+      .meta
+        span.date 2 months ago
+        span.views
+          i.fa.fa-eye
+          | 440
+        span.heart
+          i.fa.fa-heart
+          | 28
+        span.fcomments
+          i.fa.fa-comments
+          | 3
+    .item.mars-videos-sidebar-widget-23-17
+      .item-img
+        a(title='Happy Food', href='../happy-food/index.html')
+          img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/happy-food-360x240.jpg', alt='Happy Food')
+        a(href='../happy-food/index.html')
+          .img-hover
+      h3
+        a(title='Happy Food', href='../happy-food/index.html') Happy Food
+      .meta
+        span.date 2 months ago
+        span.views
+          i.fa.fa-eye
+          | 496
+        span.heart
+          i.fa.fa-heart
+          | 30
+        span.fcomments
+          i.fa.fa-comments
+          | 0
+    .item.mars-videos-sidebar-widget-23-24
+      .item-img
+        a(title='Final Fantasy XV', href='../final-fantasy-xv/index.html')
+          img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/fanta-360x240.jpg', alt='fanta')
+        a(href='../final-fantasy-xv/index.html')
+          .img-hover
+      h3
+        a(title='Final Fantasy XV', href='../final-fantasy-xv/index.html') Final Fantasy XV
+      .meta
+        span.date 2 months ago
+        span.views
+          i.fa.fa-eye
+          | 541
+        span.heart
+          i.fa.fa-heart
+          | 18
+        span.fcomments
+          i.fa.fa-comments
+          | 0
+    .item.mars-videos-sidebar-widget-23-30
+      .item-img
+        a(title='Wild Coffee', href='../bbc-knowledge-60/index.html')
+          img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/wild-coffee-360x240.jpg', alt='Wild Coffee')
+        a(href='../bbc-knowledge-60/index.html')
+          .img-hover
+      h3
+        a(title='Wild Coffee', href='../bbc-knowledge-60/index.html') Wild Coffee
+      .meta
+        span.date 2 months ago
+        span.views
+          i.fa.fa-eye
+          | 175
+        span.heart
+          i.fa.fa-heart
+          | 7
+        span.fcomments
+          i.fa.fa-comments
+          | 0
+        //
+           /.sidebar 
+      //
+         /.row
