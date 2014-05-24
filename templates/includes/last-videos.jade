@@ -11,56 +11,13 @@ block last-videos
             .row
               .carousel-inner
                 .item.active
-                  .post.type-post.status-publish.col-sm-3.col-xs-6
-                    a(title='10 Viral Videos You Have to See', href='index.html?p=1973')
-                      img.img-responsive.wp-post-image(width='230', height='150', src='frontend/imagenesejemplo/All-0055-230x150.jpg', alt='All-0055')
-                    .post-header
-                      h3
-                        a(title='10 Viral Videos You Have to See', href='index.html?p=1973') 10 Viral Videos You Have to See
-                      span.post-meta
-                        i.fa.fa-clock-o
-                        | April 25 ,2014
-                  .post.type-post.status-publish.col-sm-3.col-xs-6
-                    a(title='10 Viral Videos You Have to See', href='index.html?p=1973')
-                      img.img-responsive.wp-post-image(width='230', height='150', src='frontend/imagenesejemplo/All-0055-230x150.jpg', alt='All-0055')
-                    .post-header
-                      h3
-                        a(title='10 Viral Videos You Have to See', href='index.html?p=1973') 10 Viral Videos You Have to See
-                      span.post-meta
-                        i.fa.fa-clock-o
-                        | April 25 ,2014
-                  .post.type-post.status-publish.col-sm-3.col-xs-6
-                    a(title='10 Viral Videos You Have to See', href='index.html?p=1973')
-                      img.img-responsive.wp-post-image(width='230', height='150', src='frontend/imagenesejemplo/All-0055-230x150.jpg', alt='All-0055')
-                    .post-header
-                      h3
-                        a(title='10 Viral Videos You Have to See', href='index.html?p=1973') 10 Viral Videos You Have to See
-                      span.post-meta
-                        i.fa.fa-clock-o
-                        | April 25 ,2014
-                  .post.type-post.status-publish.col-sm-3.col-xs-6
-                    a(title='10 Viral Videos You Have to See', href='index.html?p=1973')
-                      img.img-responsive.wp-post-image(width='230', height='150', src='frontend/imagenesejemplo/All-0055-230x150.jpg', alt='All-0055')
-                    .post-header
-                      h3
-                        a(title='10 Viral Videos You Have to See', href='index.html?p=1973') 10 Viral Videos You Have to See
-                      span.post-meta
-                        i.fa.fa-clock-o
-                        | April 25 ,2014
-                  .post.type-post.status-publish.col-sm-3.col-xs-6
-                    a(title='10 Viral Videos You Have to See', href='index.html?p=1973')
-                      img.img-responsive.wp-post-image(width='230', height='150', src='frontend/imagenesejemplo/All-0055-230x150.jpg', alt='All-0055')
-                    .post-header
-                      h3
-                        a(title='10 Viral Videos You Have to See', href='index.html?p=1973') 10 Viral Videos You Have to See
-                      span.post-meta
-                        i.fa.fa-clock-o
-                        | April 25 ,2014
-        //
-             /#Ultimos partidos subid
-        //
-           /.video-section 
-      //
-         /.row 
-    //
-       /.container 
+                  each item in data.lastVideos
+                    .post.type-post.status-publish.col-sm-3.col-xs-6
+                      a(title=''+item.name, href='index.html?p=1973')
+                        img.img-responsive.wp-post-image(width='230', height='150', src='/video-images/'+item.image.filename)
+                      .post-header
+                        h3
+                          a(title='10 Viral Videos You Have to See', href='index.html?p=1973')=item.title
+                        span.post-meta
+                          i.fa.fa-clock-o
+                          | 12 de Junio, 2014
