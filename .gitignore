@@ -9,7 +9,7 @@ lib-cov
 pids
 logs
 results
-!public/video-images/*
+public/video-images/*
 !public/video-images/.gitkeep
 
 npm-debug.log

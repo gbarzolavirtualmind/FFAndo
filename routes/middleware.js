@@ -8,9 +8,9 @@
  * modules in your project's /lib directory.
  */
 
-var _ = require('underscore'),
-	querystring = require('querystring'),
-	keystone = require('keystone');
+ var _ = require('underscore'),
+ querystring = require('querystring'),
+ keystone = require('keystone');
 
 
 /**
@@ -19,54 +19,58 @@ var _ = require('underscore'),
 	The included layout depends on the navLinks array to generate
 	the navigation in the header, you may wish to change this array
 	or replace it with your own templates / logic.
-*/
+	*/
 
-exports.initLocals = function(req, res, next) {
-	
-	var locals = res.locals;
-	
-	locals.navLinks = [
+	exports.initLocals = function(req, res, next) {
+
+		var locals = res.locals;
+		locals.global = {};
+
+		locals.navLinks = [
 		{ label: 'Home',		key: 'home',		href: '/' }
-	];
-	
-	locals.user = req.user;
-	
-	next();
-	
-};
+		];
+
+		locals.user = req.user;
+
+		var q = keystone.list('Tag').model.find().limit('20');
+		q.exec(function(err, results) {
+			locals.global.lastHashtags = results;
+			next();
+		});
+	};
 
 
 /**
 	Fetches and clears the flashMessages before a view is rendered
-*/
+	*/
 
-exports.flashMessages = function(req, res, next) {
-	
-	var flashMessages = {
-		info: req.flash('info'),
-		success: req.flash('success'),
-		warning: req.flash('warning'),
-		error: req.flash('error')
+	exports.flashMessages = function(req, res, next) {
+
+		var flashMessages = {
+			info: req.flash('info'),
+			success: req.flash('success'),
+			warning: req.flash('warning'),
+			error: req.flash('error')
+		};
+
+		res.locals.messages = _.any(flashMessages, function(msgs) { return msgs.length }) ? flashMessages : false;
+
+		next();
+
 	};
-	
-	res.locals.messages = _.any(flashMessages, function(msgs) { return msgs.length }) ? flashMessages : false;
-	
-	next();
-	
-};
 
 
 /**
 	Prevents people from accessing protected pages when they're not signed in
- */
+	*/
 
-exports.requireUser = function(req, res, next) {
-	
-	if (!req.user) {
-		req.flash('error', 'Please sign in to access this page.');
-		res.redirect('/keystone/signin');
-	} else {
-		next();
+	exports.requireUser = function(req, res, next) {
+
+		if (!req.user) {
+			req.flash('error', 'Please sign in to access this page.');
+			res.redirect('/keystone/signin');
+		} else {
+			next();
+		}
+
 	}
-	
-}

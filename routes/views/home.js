@@ -1,66 +1,76 @@
+var async = require('async');
 var keystone = require('keystone');
 var Home = keystone.list('Home');
- 
+
 exports = module.exports = function(req, res) {
 	
 	var locals = res.locals,
-		  view = new keystone.View(req, res);
+  view = new keystone.View(req, res);
 
-	locals.formData = req.body || {};
-    locals.validationErrors = {};
-    locals.enquirySubmitted = false;	
-	
+  locals.formData = req.body || {};
+  locals.validationErrors = {};
+  locals.enquirySubmitted = false;	
+
 	// Set locals
 	locals.section = 'home';
   locals.data = {
-    lastHashtags: [],
     moreUsedHashtags: [],
     outstandingVideos: [],
     lastVideos: []
   };
-	
+
 
   view.on('init', function(next) {
-    var q = keystone.list('Tag').model.find().limit('20');
-      q.exec(function(err, results) {
-        locals.data.lastHashtags = results;
-      });
 
-    var q = keystone.list('Video').model.find().limit('3');
-      q.exec(function(err, results) {
-        locals.data.outstandingVideos = results;
-      });
+    async.series([
 
-    var q = keystone.list('Video').model.find().limit('6');
-      q.exec(function(err, results) {
-        locals.data.lastVideos = results;
-      });
+      function(cb) {
+        var q = keystone.list('Video').model.find().limit('3');
+        q.exec(function(err, results) {
+          locals.data.outstandingVideos = results;
+          return cb(err);
+        });
 
-    var q = keystone.list('Video').model.find().limit('6');
-      q.exec(function(err, results) {
-        locals.data.moreUsedHashtags = results;
-        next(err);
-      });
+      },
+      
+      function(cb) {
+        var q = keystone.list('Video').model.find().limit('6');
+        q.exec(function(err, results) {
+          locals.data.lastVideos = results;
+          return cb(err);
+        });
+      },
+      
+      function(cb) {
+        var q = keystone.list('Video').model.find().limit('6');
+        q.exec(function(err, results) {
+          locals.data.moreUsedHashtags = results;
+          return cb(err);
+        });    
+      }
+      ], function(err){
+        return next(err);
 
+      });
   });
 
   view.on('post', { action: 'contact' }, function(next) {          
-     var model = new Home.model(),
-         updater = model.getUpdateHandler(req);
-     
-     updater.process(req.body, {
-             flashErrors: true,
+   var model = new Home.model(),
+   updater = model.getUpdateHandler(req);
+
+   updater.process(req.body, {
+     flashErrors: true,
              //fields: 'name, email, phone, enquiryType, message',
              errorMessage: 'There was a problem submitting your enquiry:'
-     }, function(err) {
+           }, function(err) {
              if (err) {
-                     locals.validationErrors = err.errors;
+               locals.validationErrors = err.errors;
              } else {
-                     locals.enquirySubmitted = true;
+               locals.enquirySubmitted = true;
              }
              next();
-     });      
-   });
+           });      
+ });
 
 	// Render the view
 	view.render('home');
