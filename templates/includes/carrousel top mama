@@ -1,4 +1,4 @@
-#carousel-featured-mars-featuredvideo-widgets-2.carousel(data-ride='carousel')
+#carousel-featured-mars-featuredvideo-widgets-2.carousel.carousel-mars-featuredvideo-widgets-2.slide(data-ride='carousel')
   .container.section-header
     h3
       i.fa.fa-star
@@ -15,13 +15,13 @@
               .col-sm-4
                 .item-img
                   a(title='New Destiny Trailer', href='http://theme.marstheme.com/videotube/video/destiny/')
-                    img.img-responsive.wp-post-image(width='360', height='240', src='/video-images/'+item.image.filename, alt='game1')
+                    img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/game1-360x240.jpg', alt='game1')
                   a(href='http://theme.marstheme.com/videotube/video/destiny/')
                     .img-hover
                 .feat-item
                   .feat-info.video-info-34
                     h3
-                      a(title='New Destiny Trailer', href='http://theme.marstheme.com/videotube/video/destiny/')=item.title
+                      a(title=item.title, href='http://theme.marstheme.com/videotube/video/destiny/')=item.title
                     .meta
                       span.date 2 months ago
                       span.views

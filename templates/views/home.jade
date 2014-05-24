@@ -2,6 +2,9 @@ extends ../layouts/master
 
 block top-slider
 	include ../includes/top-slider.jade
+	h1= JSON.stringify(data)
+	each item in data.outstandingVideos
+		h2= item.image.path +"/"+ item.image.filename
 block last-videos
 	include ../includes/last-videos.jade
 block last-hashtags
