@@ -9,8 +9,8 @@ lib-cov
 pids
 logs
 results
-files/*
-!files/.gitkeep
+!public/video-images/*
+!public/video-images/.gitkeep
 
 npm-debug.log
 node_modules

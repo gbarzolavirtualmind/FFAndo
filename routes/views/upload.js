@@ -12,6 +12,13 @@ exports = module.exports = function(req, res) {
 	
 	// Set locals
 	locals.section = 'upload';
+  locals.data = {
+    lastHashtags: [],
+    moreUsedHashtags: [],
+    outstandingVideos: [],
+    lastVideos: []
+  };
+  
 	
 
 view.on('post', { action: 'contact' }, function(next) {
@@ -33,6 +40,30 @@ view.on('post', { action: 'contact' }, function(next) {
                });
                
        });
+
+  view.on('init', function(next) {
+    var q = keystone.list('Tag').model.find().limit('20');
+      q.exec(function(err, results) {
+        locals.data.lastHashtags = results;
+      });
+
+    var q = keystone.list('Video').model.find().limit('3');
+      q.exec(function(err, results) {
+        locals.data.outstandingVideos = results;
+      });
+
+    var q = keystone.list('Video').model.find().limit('6');
+      q.exec(function(err, results) {
+        locals.data.lastVideos = results;
+      });
+
+    var q = keystone.list('Video').model.find().limit('6');
+      q.exec(function(err, results) {
+        locals.data.moreUsedHashtags = results;
+        next(err);
+      });
+
+  });
 
 	// Render the view
 	view.render('upload');

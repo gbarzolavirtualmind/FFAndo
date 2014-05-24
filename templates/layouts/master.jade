@@ -95,26 +95,8 @@ html
                   a(href='https://wordpress.org/', title='Powered by WordPress, state-of-the-art semantic personal publishing platform.') WordPress.org
             .col-sm-3.widget
               h4.footer-widget-title LO MAS BUSCADO
-              a.tag.tag-link-287(href='../../tag/band/index.html', title='5 topics') band
-              a.tag.tag-link-281(href='../../tag/delicious/index.html', title='6 topics') delicious
-              a.tag.tag-link-159(href='../../tag/fail/index.html', title='4 topics') Fail
-              a.tag.tag-link-33(href='../../video_tag/featured/index.html', title='39 topics') featured
-              a.tag.tag-link-293(href='../../video_tag/featuredvid/index.html', title='6 topics') featuredvid
-              a.tag.tag-link-279(href='../../tag/food-2/index.html', title='6 topics') food
-              a.tag.tag-link-278(href='../../tag/funny/index.html', title='4 topics') funny
-              a.tag.tag-link-289(href='../../tag/live/index.html', title='5 topics') live
-              a.tag.tag-link-37(href='../../video_tag/movie/index.html', title='8 topics') Movie
-              a.tag.tag-link-286(href='../../tag/music-3/index.html', title='5 topics') music
-              a.tag.tag-link-254(href='../../video_tag/music-2/index.html', title='7 topics') music
-              a.tag.tag-link-32(href='../../video_tag/official/index.html', title='6 topics') official
-              a.tag.tag-link-288(href='../../tag/perfomance/index.html', title='5 topics') perfomance
-              a.tag.tag-link-45(href='../../video_tag/recipe/index.html', title='3 topics') Recipe
-              a.tag.tag-link-280(href='../../tag/recipe-2/index.html', title='6 topics') recipe
-              a.tag.tag-link-290(href='../../video_tag/song/index.html', title='3 topics') song
-              a.tag.tag-link-31(href='../../video_tag/video/index.html', title='6 topics') video
-              a.tag.tag-link-47(href='../../video_tag/video-game/index.html', title='6 topics') Video Game
-              a.tag.tag-link-277(href='../../tag/videos/index.html', title='4 topics') videos
-              a.tag.tag-link-276(href='../../tag/viral/index.html', title='4 topics') viral
+              each item in data.lastHashtags
+                a.tag(href='../../tag/band/index.html', title='5 Veces usado')=item.name
             .col-sm-3.widget
               h4.footer-widget-title REDES SOCIALES
               ul.list-unstyled.social
