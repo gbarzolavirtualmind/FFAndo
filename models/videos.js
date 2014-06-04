@@ -14,8 +14,8 @@ Video.add({
 	description: { type: String, initial: true},
 	urlUptobox: { type: String, initial: true, required: true },
 	dateVideo: { type: Types.Date},
-	dateCreation: { type: Types.Date},
-	user: { type: Types.Relationship, ref: 'User' , required: true, initial: true},
+	dateCreation: { type: Types.Date, default: Date.now, noedit: true},
+	user: { type: Types.Relationship, ref: 'User' , required: true, initial: true, noedit: true},
 	tags: { type: Types.Relationship, ref: 'Tag' , required: true, initial: true, many: true},
 	image: { type: Types.LocalFile, dest:"public/video-images", required: true, allowedTypes:["gif","jpeg"]}
 });

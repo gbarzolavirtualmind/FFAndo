@@ -13,11 +13,10 @@ block last-videos
                 .item.active
                   each item in data.lastVideos
                     .post.type-post.status-publish.col-sm-3.col-xs-6
-                      a(title=''+item.name, href='index.html?p=1973')
+                      a(title=''+item.name, href='video?id='+item.id)
                         img.img-responsive.wp-post-image(width='230', height='150', src='/video-images/'+item.image.filename)
                       .post-header
                         h3
-                          a(title='10 Viral Videos You Have to See', href='index.html?p=1973')=item.title
+                          a(title='10 Viral Videos You Have to See', href='video?id='+item.id)=item.title
                         span.post-meta
-                          i.fa.fa-clock-o
-                          | 12 de Junio, 2014
+                          i.fa.fa-clock-o=item.dateCreation

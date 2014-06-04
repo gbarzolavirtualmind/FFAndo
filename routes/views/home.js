@@ -14,7 +14,7 @@ exports = module.exports = function(req, res) {
 	// Set locals
 	locals.section = 'home';
   locals.data = {
-    moreUsedHashtags: [],
+    lastHashtags: [],
     outstandingVideos: [],
     lastVideos: []
   };
@@ -44,14 +44,15 @@ exports = module.exports = function(req, res) {
       function(cb) {
         var q = keystone.list('Video').model.find().limit('6');
         q.exec(function(err, results) {
-          locals.data.moreUsedHashtags = results;
+          locals.data.lastHashtags = results;
           return cb(err);
         });    
       }
-      ], function(err){
+      ],function(err){
         return next(err);
 
-      });
+      }
+    );
   });
 
   view.on('post', { action: 'contact' }, function(next) {          
