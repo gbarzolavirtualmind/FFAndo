@@ -1,3 +1,7 @@
+var needle = require('needle');
+var cheerio = require('cheerio');
+var request = require('request');
+var _ = require('underscore');
 var keystone = require('keystone');
 var Video = keystone.list('Video');
 
@@ -16,30 +20,28 @@ exports = module.exports = function(req, res) {
     lastHashtags: [],
     moreUsedHashtags: [],
     outstandingVideos: [],
-    lastVideos: []
+    lastVideos: [],
+    urlVideo: [],
+    videoSelected: []
   };
 
 
   view.on('post', { action: 'contact' }, function(next) {
    var model = new Video.model(),
    updater = model.getUpdateHandler(req);
-
-   updater.process(req.body, {
-     flashErrors: true,
-                   //fields: 'name, email, phone, enquiryType, message',
-                   errorMessage: 'There was a problem submitting your enquiry:'
-                 }, function(err) {
-                   if (err) {
-                     locals.validationErrors = err.errors;
-                   } else {
-                     locals.enquirySubmitted = true;
-                   }
-                   next();
-                 });
- });
-
-
-
+     updater.process(req.body, {
+       flashErrors: true,
+       //fields: 'name, email, phone, enquiryType, message',
+       errorMessage: 'There was a problem submitting your enquiry:'
+     }, function(err) {
+       if (err) {
+         locals.validationErrors = err.errors;
+       } else {
+         locals.enquirySubmitted = true;
+       }
+       next();
+     });
+   });
 
   view.on('init', function(next) {
     var q = keystone.list('Video').model.find().limit('3');
@@ -67,6 +69,58 @@ exports = module.exports = function(req, res) {
     });
 
   });
+
+  view.on('init', function(next) {
+    var q = keystone.list('Video').model.find()
+                                          .limit('6')
+                                          .where('_id', req.params.id);
+    q.exec(function(err, results) {
+      locals.data.videoSelected = results[0];
+      console.log(results);
+      next(err);
+    });
+  });
+
+  view.on('init', function(next) {
+    var form = {
+      op:"login",
+      redirect:"",
+      login:"Reco-X",
+      password:"35322114"
+    };
+
+    var url = "http://uptobox.com/"+locals.data.videoSelected.urlUptobox;
+    console.log(url)
+    var j = request.jar();
+    var cookie1 =  request.cookie("login=Reco-X")
+    var cookie2 = request.cookie("xfss=65b6ozipt2og60x4")
+    j.setCookie(cookie1, "http://uptobox.com");
+    j.setCookie(cookie2, "http://uptobox.com");
+
+    request({uri:url, jar:j},function(error,response,body){
+      var $ = cheerio.load(body);
+      var hiddens = $("input[type='hidden']");  
+      var getHiddenValue = function(hiddens,name){
+        result = _.find(hiddens,function(item){return item.attribs.name==name});
+        return result.attribs.value;
+      }
+      var form2 = {
+        op:getHiddenValue(hiddens,"op"),
+        id:getHiddenValue(hiddens,"id"),
+        rand:getHiddenValue(hiddens,"rand"),
+        referer:getHiddenValue(hiddens,"referer"),
+        method_free:"",
+        method_premium:1  
+      };
+      request.post(url,{form:form2,jar:j},function(error,response,body){
+        var $ = cheerio.load(body);
+        var video_url = $(".button_upload a").attr("href");
+        locals.data.urlVideo = video_url;
+        next()
+      });
+    });
+  });
+
 
 	// Render the view
 	view.render('video');

@@ -52,7 +52,7 @@ exports = module.exports = function(app) {
 	app.get('/', routes.views.index);
 	app.get('/upload', routes.views.upload);
 	app.post('/upload', routes.views.upload);
-	app.get('/video', routes.views.video);
+	app.get('/video/:id', routes.views.video);
 	app.post('/video', routes.views.video);
 	app.get('/home', routes.views.home);
 	app.post('/home', routes.views.home);
