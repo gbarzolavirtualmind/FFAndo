@@ -17,7 +17,7 @@ Video.add({
 	dateCreation: { type: Types.Date, default: Date.now, noedit: true},
 	user: { type: Types.Relationship, ref: 'User' , required: true, initial: true, noedit: true},
 	tags: { type: Types.Relationship, ref: 'Tag' , required: true, initial: true, many: true},
-	image: { type: Types.LocalFile, dest:"public/video-images", required: true, allowedTypes:["gif","jpeg"]}
+	image: { type: Types.LocalFile, dest:"public/video-images", allowedTypes:["gif","jpeg"]}
 });
 
 /**
