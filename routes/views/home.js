@@ -48,11 +48,9 @@ exports = module.exports = function(req, res) {
           return cb(err);
         });    
       }
-      ],function(err){
+    ],function(err){
         return next(err);
-
-      }
-    );
+      });
   });
 
   view.on('post', { action: 'contact' }, function(next) {          
