@@ -5,7 +5,7 @@
       | Comentarios
 .criticas
   .top
-    .left
+    //.left
       .rn
         .rate
           span(style='width: 73%;')
@@ -49,17 +49,6 @@
         span.votos 541 | votos
     .right2
       form(action='forms/add_critica_pelicula', onsubmit='c.submitForm(this,upCom,[\'puntaje\']);return false')
-        .floatr
-          .action_bar
-            .box.puntuar
-              a
-              a
-              a
-              a
-              a
-              .txt puntuar
-              input(type='hidden', name='puntaje', value='')
-        input(type='hidden', name='showid', value='5236')
         textarea.critica(name='comentario', placeholder='Puntúa. Escribe un comentario opcional.')
         #errormsg.errormsg
         .but

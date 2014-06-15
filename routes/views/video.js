@@ -3,7 +3,9 @@ var cheerio = require('cheerio');
 var request = require('request');
 var _ = require('underscore');
 var keystone = require('keystone');
+var async = require('async');
 var Video = keystone.list('Video');
+
 
 exports = module.exports = function(req, res) {
 	
@@ -17,68 +19,64 @@ exports = module.exports = function(req, res) {
 	// Set locals
 	locals.section = 'video';
   locals.data = {
-    lastHashtags: [],
-    moreUsedHashtags: [],
-    outstandingVideos: [],
-    lastVideos: [],
     urlVideo: [],
-    videoSelected: []
+    videoSelected: [],
+    username: [],
+    tagsNames: [],
+    relatedVideos: []
   };
 
 
-  view.on('post', { action: 'contact' }, function(next) {
-   var model = new Video.model(),
-   updater = model.getUpdateHandler(req);
-     updater.process(req.body, {
-       flashErrors: true,
-       //fields: 'name, email, phone, enquiryType, message',
-       errorMessage: 'There was a problem submitting your enquiry:'
-     }, function(err) {
-       if (err) {
-         locals.validationErrors = err.errors;
-       } else {
-         locals.enquirySubmitted = true;
-       }
-       next();
-     });
-   });
-
   view.on('init', function(next) {
-    var q = keystone.list('Video').model.find().limit('3');
-    q.exec(function(err, results) {
-      locals.data.outstandingVideos = results;
-      next(err);
-    });
-  });
+    async.series([
+      function(cb) {
+        var q = keystone.list('Video').model.find().where('_id', req.params.id);
+        q.exec(function(err, results) {
+          locals.data.videoSelected = results[0];
+          return cb(err);
+        });
+      },
 
-  view.on('init', function(next) {
-    var q = keystone.list('Video').model.find().limit('6');
-    q.exec(function(err, results) {
-      locals.data.lastVideos = results;
-      next(err);
-    });
+      function(cb) {
+        var tagsNames = [];
+        var a = locals.data.videoSelected.tags;
+        var i = 0;
+        a.forEach(function(a) {
+            var q = keystone.list('Tag').model.find().where('_id', a);
+            q.exec(function(err, results) {
+              tagsNames[i] = results[0];
+              i++;
+              //TODO: PREGUNTAR A BETO LA GILADA DEL ARRAY!!!
+            });  
+        });
+        locals.data.tagsNames = tagsNames
+        return cb()
+      },
 
-  });
+      function(cb) {
+        var q = keystone.list('User').model.find().where('_id', locals.data.videoSelected.user);
+        q.exec(function(err, results) {
+          locals.data.username = results[0];
+          //TODO: Poner el username en un valor de videoSelected
+          return cb(err);
+        });
+      },
 
-  view.on('init', function(next) {
+      function(cb) {
+        var q = keystone.list('Video').model.find({'_id': {$ne : req.params.id}})
+                                                   .limit('6')
+                                                   .where('tags').in(locals.data.videoSelected.tags);
+        q.exec(function(err, results) {
+          console.log(results);
+          locals.data.relatedVideos = results
+          console.log(locals.data.relatedVideos);
+          return cb(err);
+        });
+      }
 
-    var q = keystone.list('Video').model.find().limit('6');
-    q.exec(function(err, results) {
-      locals.data.moreUsedHashtags = results;
-      next(err);
-    });
-
-  });
-
-  view.on('init', function(next) {
-    var q = keystone.list('Video').model.find()
-                                          .limit('6')
-                                          .where('_id', req.params.id);
-    q.exec(function(err, results) {
-      locals.data.videoSelected = results[0];
-      console.log(results);
-      next(err);
-    });
+    ],function(err){
+        return next(err);
+      });
   });
 
   view.on('init', function(next) {
@@ -90,7 +88,7 @@ exports = module.exports = function(req, res) {
     };
 
     var url = "http://uptobox.com/"+locals.data.videoSelected.urlUptobox;
-    console.log(url)
+    //console.log(url)
     var j = request.jar();
     var cookie1 =  request.cookie("login=Reco-X")
     var cookie2 = request.cookie("xfss=65b6ozipt2og60x4")

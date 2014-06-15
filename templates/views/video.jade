@@ -4,7 +4,7 @@ block video
   .video-wrapper
     .container
       .video-info
-        h1 Godzilla Official Main Trailer
+        h1=data.videoSelected.title
         span.views
           i.fa.fa-eye
           | 741
@@ -14,11 +14,10 @@ block video
             label.likevideo1717 48
       .videoWrapper.player
         //iframe(width='1140', height='641', src='http://www.youtube.com/embed/vIu85WQTPRc', frameborder='0', allowfullscreen='allowfullscreen')
-        video(id='video', class='video-js vjs-default-skin', controls, preload='none', width='640', height='264', poster='http://video-js.zencoder.com/oceans-clip.png' )
+        video(id='video', class='video-js vjs-default-skin', controls, preload='none', poster='/video-images/'+data.videoSelected.image.filename )
           source(src=data.urlVideo, type='video/mp4')
           source(src=data.urlVideo,type='video/webm')
           source(src=data.urlVideo,type='video/ogg')
-
 block content
   .row.video-options
     .col-xs-3
@@ -41,22 +40,15 @@ block content
         span.option-text Hashtags
   .video-details
     span.date
-      | Publicado el 22 de agosto del 2014 by 
-      a(href='#') Toan Nguyen
+      | Publicado #{data.videoSelected.dateVideo} por 
+      a(href='#')=data.username.nickname
     .post-entry
-      p
-        | Lorem ipsum dolor sit amet, erant complectitur ea nec, no sea vide nullam, ne appareat quaerendum vel. Cu meliore accusata vis, nam facer evertitur cu, id facilisi abhorreant per. Putant animal eu sea, ne quot nihil mediocritatem cum, cu ius torquatos dissentiet contentiones. Eos ex propriae invidunt accusamus, in vidit deterruisset eum, everti ponderum suavitate nec ad. Et dico melius insolens vis, nullam corrumpit adipiscing mel id.
-      p
-        | Utroque singulis consectetuer eam ei. Ne vel tritani definiebas, viris quaeque invenire sit ea. No consul mollis est. Iuvaret tractatos voluptatum per te.
+      p=data.videoSelected.description
     span.meta
-      span.meta-info Category
-      a(href='../../categories/trailers/index.html', rel='tag') Trailers
+      span.meta-info Categorias
     span.meta
-      span.meta-info Tag
-      a(href='../../video_tag/featuredvid/index.html', rel='tag') featuredvid
-      a(href='../../video_tag/godzilla/index.html', rel='tag') godzilla
-      a(href='../../video_tag/movies/index.html', rel='tag') movies
-      a(href='../../video_tag/trailer/index.html', rel='tag') trailer
+      each item in data.tagsNames
+        a(href='', rel='tag')=item.name
 
   block comments
     include ../includes/video-comments.jade

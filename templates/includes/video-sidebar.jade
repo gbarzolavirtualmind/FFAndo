@@ -21,8 +21,7 @@ block sharing
           i.fa.fa-rss
           span.counter 87
           span.counter-text Subscribers
-      //
-         Modal 
+      //Modal 
       #subscrib-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='subscrib-modal-label', aria-hidden='true')
         .modal-dialog
           .modal-content
@@ -51,83 +50,23 @@ block sharing
 block more-videos
   .widget
     h4.widget-title OTROS VIDEOS
-    .item.mars-videos-sidebar-widget-23-7
-      .item-img
-        a(title='Hiking The Pacific Crest Trail', href='../hiking-the-pacific-crest-trail/index.html')
-          img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/hiking-the-pacific-crest-trail-360x240.jpg', alt='Hiking The Pacific Crest Trail')
-        a(href='../hiking-the-pacific-crest-trail/index.html')
-          .img-hover
-      h3
-        a(title='Hiking The Pacific Crest Trail', href='../hiking-the-pacific-crest-trail/index.html') Hiking The Pacific Crest Trail
-      .meta
-        span.date 2 months ago
-        span.views
-          i.fa.fa-eye
-          | 440
-        span.heart
-          i.fa.fa-heart
-          | 28
-        span.fcomments
-          i.fa.fa-comments
-          | 3
-    .item.mars-videos-sidebar-widget-23-17
-      .item-img
-        a(title='Happy Food', href='../happy-food/index.html')
-          img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/happy-food-360x240.jpg', alt='Happy Food')
-        a(href='../happy-food/index.html')
-          .img-hover
-      h3
-        a(title='Happy Food', href='../happy-food/index.html') Happy Food
-      .meta
-        span.date 2 months ago
-        span.views
-          i.fa.fa-eye
-          | 496
-        span.heart
-          i.fa.fa-heart
-          | 30
-        span.fcomments
-          i.fa.fa-comments
-          | 0
-    .item.mars-videos-sidebar-widget-23-24
-      .item-img
-        a(title='Final Fantasy XV', href='../final-fantasy-xv/index.html')
-          img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/fanta-360x240.jpg', alt='fanta')
-        a(href='../final-fantasy-xv/index.html')
-          .img-hover
-      h3
-        a(title='Final Fantasy XV', href='../final-fantasy-xv/index.html') Final Fantasy XV
-      .meta
-        span.date 2 months ago
-        span.views
-          i.fa.fa-eye
-          | 541
-        span.heart
-          i.fa.fa-heart
-          | 18
-        span.fcomments
-          i.fa.fa-comments
-          | 0
-    .item.mars-videos-sidebar-widget-23-30
-      .item-img
-        a(title='Wild Coffee', href='../bbc-knowledge-60/index.html')
-          img.img-responsive.wp-post-image(width='360', height='240', src='/frontend/imagenesejemplo/wild-coffee-360x240.jpg', alt='Wild Coffee')
-        a(href='../bbc-knowledge-60/index.html')
-          .img-hover
-      h3
-        a(title='Wild Coffee', href='../bbc-knowledge-60/index.html') Wild Coffee
-      .meta
-        span.date 2 months ago
-        span.views
-          i.fa.fa-eye
-          | 175
-        span.heart
-          i.fa.fa-heart
-          | 7
-        span.fcomments
-          i.fa.fa-comments
-          | 0
-        //
-           /.sidebar 
-      //
-         /.row
+    each item in data.relatedVideos
+      .item.mars-videos-sidebar-widget-23-7
+        .item-img
+          a(title=+item.title, href='video/'+item.id)
+            img.img-responsive.wp-post-image(width='360', height='240', src='/video-images/'+data.videoSelected.image.filename, alt=+item.title)
+          a(href='video/'+item.id)
+            .img-hover
+        h3
+          a(title=+item.title, href='video/'+item.id)=item.title
+        .meta
+          span.date 2 months ago
+          span.views
+            i.fa.fa-eye
+            | 440
+          span.heart
+            i.fa.fa-heart
+            | 28
+          span.fcomments
+            i.fa.fa-comments
+            | 3

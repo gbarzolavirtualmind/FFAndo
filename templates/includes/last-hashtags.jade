@@ -12,11 +12,11 @@
               .item.active
                 each item in data.lastHashtags
                   .post.type-post.status-publish.col-sm-2.col-xs-6
-                    a(title='10 Viral Videos You Have to See', href='index.html?p=1973')
+                    a(title=+item.title, href='video/'+item.id)
                       img.img-responsive.wp-post-image(width='230', height='150', src='/video-images/'+item.image.filename)
                     .post-header
                       h3
-                        a(title='10 Viral Videos You Have to See', href='index.html?p=1973')=item.title
+                        a(title=+item.title, href='video/'+item.id)=item.title
                       span.post-meta
                         i.fa.fa-clock-o
                         | April 25 ,2014
