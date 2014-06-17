@@ -664,11 +664,6 @@ a img.aligncenter {
 .video-info.small h1 {
     color: #000000;
 }
-.player {
-    margin-bottom: 25px;
-    width:80%;
-    max-width:640px;
-}
 
 #video{
     width: 100% !important;
