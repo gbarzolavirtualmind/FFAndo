@@ -2,12 +2,12 @@ doctype html
 html
   //- HTML HEADER
   head
-      title= title || 'Stremeando'
+      title= title || 'Uratata'
       meta(charset='utf-8')
       //if IE
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')
-      title Titulo de la pagina
+      title Uratata - Deportes en el acto
       
       //- Include template-specific stylesheets by extending the css block
       block css
@@ -30,8 +30,8 @@ html
       .container
         .row
           #logo.col-sm-3
-            a(href='', title='Just another WordPress site')
-              img(alt='Just another WordPress site', src='/frontend/img/logo.png')
+            a(href='/home', title='Uratata - Deportes en el Acto')
+              img(alt='Uratata - Deportes en el Acto', src='/frontend/img/logo.png')
           //Comentado por ahora, este es el SEARCH del sitio
             form(action='', method='get')
             #header-search.col-sm-6
@@ -44,12 +44,6 @@ html
               i.fa.fa-twitter
             a(href='#')
               i.fa.fa-google-plus
-            a(href='#')
-              i.fa.fa-instagram
-            a(href='#')
-              i.fa.fa-linkedin
-            a(href='#')
-              i.fa.fa-rss
     //- NOTE:
     //- There is no .container wrapping class around body blocks to allow more flexibility in design.
     //- Remember to include it in your templates when you override the intro and content blocks!
@@ -81,25 +75,15 @@ html
               h4.footer-widget-title Meta
               ul
                 li
-                  a(href='../../register/index.html?action=register') Register
+                  a(href='../../register/index.html?action=register') Registrate
                 li
-                  a(href='../../register/index.html') Log in
-                li
-                  a(href='../../feed/index.html', title='Syndicate this site using RSS 2.0')
-                    | Entries
-                    abbr(title='Really Simple Syndication') RSS
-                li
-                  a(href='../../comments/feed/index.html', title='The latest comments to all posts in RSS')
-                    | Comments
-                    abbr(title='Really Simple Syndication') RSS
-                li
-                  a(href='https://wordpress.org/', title='Powered by WordPress, state-of-the-art semantic personal publishing platform.') WordPress.org
+                  a(href='../../register/index.html') Ingresar
             .col-sm-3.widget
-              h4.footer-widget-title LO MAS BUSCADO
+              h4.footer-widget-title Ultimos Tags
               each item in global.lastHashtags
                 a.tag(href='../../tag/band/index.html', title='5 Veces usado')=item.name
             .col-sm-3.widget
-              h4.footer-widget-title REDES SOCIALES
+              h4.footer-widget-title Redes Sociales
               ul.list-unstyled.social
                 li
                   a(href='#')
@@ -113,27 +97,13 @@ html
                   a(href='#')
                     i.fa.fa-google-plus
                     | Google Plus
-                li
-                  a(href='#')
-                    i.fa.fa-instagram
-                    | Instagram
-                li
-                  a(href='#')
-                    i.fa.fa-linkedin
-                    | Linkedin
-                li
-                  a(href='../../feed/rss/index.html')
-                    i.fa.fa-rss
-                    | RSS
             .col-sm-3.widget
               h4.footer-widget-title SOBRE LA PAGINA
               .textwidget
                 p
-                  | Donec rutrum varius quam non euismod. Nullam arcu urna, dignisim amsan bindum ut, fermentum a quam.
+                  | Somos una nueva web que piensa, tener una coleccion de todos los partidos de futbol para que puedas verlos cuando quieras con tan solo 1 click
                 p
-                  | Suspendisse fermentum augue vel nulla iaculis id tempus massa consequat. Donec venenatis leo eu felis condiment lorem ipsum.
+                  | Estamos buscando uploaders/ripeadores para poder llevar adelante este proyecto
           .copyright
             p
-              | FUTGOL 2014 - Powered by WordPress &
-              span(style='line-height: 1.5em;') MarsTheme
-
+              | Uratata 2014 - Hecho por el mundo entero

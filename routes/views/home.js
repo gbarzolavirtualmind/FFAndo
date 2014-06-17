@@ -34,7 +34,7 @@ exports = module.exports = function(req, res) {
       },
       
       function(cb) {
-        var q = keystone.list('Video').model.find().limit('6');
+        var q = keystone.list('Video').model.find().limit('20');
         q.exec(function(err, results) {
           locals.data.lastVideos = results;
           return cb(err);
@@ -42,7 +42,7 @@ exports = module.exports = function(req, res) {
       },
       
       function(cb) {
-        var q = keystone.list('Video').model.find().limit('6');
+        var q = keystone.list('Video').model.find().limit('10');
         q.exec(function(err, results) {
           locals.data.lastHashtags = results;
           return cb(err);
