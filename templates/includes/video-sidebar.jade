@@ -53,12 +53,12 @@ block more-videos
     each item in data.relatedVideos
       .item.mars-videos-sidebar-widget-23-7
         .item-img
-          a(title=+item.title, href='video/'+item.id)
-            img.img-responsive.wp-post-image(width='360', height='240', src='/video-images/'+item.image.filename, alt=+item.title)
+          a(title=item.title, href='video/'+item.id)
+            img.img-responsive.wp-post-image(width='360', height='240', src=item.imageCloudinary.url, alt=+item.title)
           a(href='video/'+item.id)
             .img-hover
         h3
-          a(title=+item.title, href='video/'+item.id)=item.title
+          a(title=item.title, href='video/'+item.id)=item.title
         .meta
           span.date 2 months ago
           span.views
