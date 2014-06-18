@@ -32,12 +32,7 @@ exports = module.exports = function(req, res) {
       function(cb) {
         var q = keystone.list('Video').model.find().where('_id', req.params.id);
         q.exec(function(err, results) {
-          locals.data.videoSelected = results[0];
-          var a = locals.data.videoSelected;
-
-          //Preguntar a beto como mierda usar el undersocre con las imagenes :) y tmb si conviene usar array o objetos en locals.data
-          //console.log(_.src(a));
-          
+          locals.data.videoSelected = results[0];        
           return cb(err);
         });
       },

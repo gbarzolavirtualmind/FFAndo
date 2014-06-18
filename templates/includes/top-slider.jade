@@ -15,7 +15,7 @@
               .col-sm-4
                 .item-img
                   a(title='New Destiny Trailer', href='http://theme.marstheme.com/videotube/video/destiny/')
-                    img.img-responsive(width='360', height='240', src=item.imageCloudinary.url, alt=item.title)
+                    img.img-responsive(src=item._.imageCloudinary.thumbnail(360, 240), alt=item.title)
                   a(href='/video/'+item.id)
                     .img-hover
                 .feat-item
@@ -23,9 +23,7 @@
                     h3
                       a(title=item.title, href='/video/'+item.id)=item.title
                     .meta
-                      //Usar esta forma, pero formateada
-                        span.date=item.dateCreation
-                      span.date Subido hace 2 semanas
+                      span.date=item._.dateCreation.moment().lang('es').format('LL')
                       span.views
                         i.fa.fa-eye
                         | 1819
