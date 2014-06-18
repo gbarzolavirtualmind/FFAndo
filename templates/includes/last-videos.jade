@@ -14,9 +14,9 @@ block last-videos
                   each item in data.lastVideos
                     .post.type-post.status-publish.col-sm-3.col-xs-6
                       a(title=item.title, href='video/'+item.id)
-                        img.img-responsive.images-last-videos(src=item.imageCloudinary.url)
+                        img.img-responsive.images-last-videos(src=item._.imageCloudinary.thumbnail(263, 197))
                       .post-header
                         h3
                           a(title=item.title, href='video/'+item.id)=item.title
                         span.post-meta
-                          i.fa.fa-clock-o=item.dateCreation
+                          i.fa.fa-clock-o=item._.dateCreation.moment().lang('es').format('LL')

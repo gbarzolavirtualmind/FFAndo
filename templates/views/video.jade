@@ -12,9 +12,9 @@ block video
           span.likes
             i.fa.fa-thumbs-up
             label.likevideo1717 48
-      .videoWrapper.player
+      .videoWrapper.player    
         //iframe(width='1140', height='641', src='http://www.youtube.com/embed/vIu85WQTPRc', frameborder='0', allowfullscreen='allowfullscreen')
-        video(id='video', class='video-js vjs-default-skin', controls, preload='none', poster=data.videoSelected.imageCloudinary.url )
+        video(id='video', class='video-js vjs-default-skin', controls, preload='none', poster=data.videoSelected._.imageCloudinary.scale(1140, 641))
           source(src=data.urlVideo, type='video/mp4')
           source(src=data.urlVideo,type='video/webm')
           source(src=data.urlVideo,type='video/ogg')
@@ -40,7 +40,7 @@ block content
         span.option-text Hashtags
   .video-details
     span.date
-      | Publicado #{data.videoSelected.dateVideo} por 
+      | Publicado el #{data.videoSelected._.dateCreation.moment().lang('es').format('LL')} por 
       a(href='#')=data.username.nickname
     .post-entry
       p=data.videoSelected.description

@@ -54,7 +54,7 @@ block more-videos
       .item.mars-videos-sidebar-widget-23-7
         .item-img
           a(title=item.title, href='video/'+item.id)
-            img.img-responsive.wp-post-image(width='360', height='240', src=item.imageCloudinary.url, alt=+item.title)
+            img.img-responsive(width='360', height='240', src=item._.imageCloudinary.thumbnail(360, 240), alt=item.title)
           a(href='video/'+item.id)
             .img-hover
         h3
