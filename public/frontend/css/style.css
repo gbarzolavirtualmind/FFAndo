@@ -285,7 +285,7 @@ a.viewmore i {
 }
 .video-section .item h3 a, .widget .item h3 a {
     color: #000000;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     overflow: hidden;
     white-space: nowrap;
@@ -668,6 +668,7 @@ a img.aligncenter {
 #video{
     width: 100% !important;
     height: auto !important;
+    max-height: 641px;
 }
 .comments {
     margin-bottom: 40px;
@@ -1051,4 +1052,10 @@ background:#4c5358!important;
 
 #footer .widget ul li a,#footer .widget p a,#footer .widget p {
 color:#fff;
+}
+
+.images-last-videos{
+height: 175px !important;
+width: 233px !important;
+
 }

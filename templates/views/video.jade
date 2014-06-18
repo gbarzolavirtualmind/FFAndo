@@ -14,7 +14,7 @@ block video
             label.likevideo1717 48
       .videoWrapper.player
         //iframe(width='1140', height='641', src='http://www.youtube.com/embed/vIu85WQTPRc', frameborder='0', allowfullscreen='allowfullscreen')
-        video(id='video', class='video-js vjs-default-skin', controls, preload='none', poster='/video-images/'+data.videoSelected.image.filename )
+        video(id='video', class='video-js vjs-default-skin', controls, preload='none', poster=data.videoSelected.imageCloudinary.url )
           source(src=data.urlVideo, type='video/mp4')
           source(src=data.urlVideo,type='video/webm')
           source(src=data.urlVideo,type='video/ogg')
