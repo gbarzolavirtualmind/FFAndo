@@ -68,8 +68,8 @@ exports = module.exports = function(req, res) {
                                                    .where('tags').in(locals.data.videoSelected.tags);
         q.exec(function(err, results) {
           console.log(results);
-          locals.data.relatedVideos = results
-          console.log(locals.data.relatedVideos);
+          locals.data.relatedVideos = results;
+
           return cb(err);
         });
       }
@@ -100,7 +100,10 @@ exports = module.exports = function(req, res) {
       var hiddens = $("input[type='hidden']");  
       var getHiddenValue = function(hiddens,name){
         result = _.find(hiddens,function(item){return item.attribs.name==name});
-        return result.attribs.value;
+        if (result) {
+          return result.attribs.value;
+        }
+        return false
       }
       var form2 = {
         op:getHiddenValue(hiddens,"op"),
