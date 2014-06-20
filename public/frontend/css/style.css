@@ -668,7 +668,6 @@ a img.aligncenter {
 #video{
     width: 100% !important;
     height: auto !important;
-    max-height: 641px;
 }
 .comments {
     margin-bottom: 40px;
